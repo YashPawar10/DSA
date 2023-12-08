@@ -2,6 +2,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+
 vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
 	// Write your code here.
 	int i=m-1,k=m+n-1,j=n-1;

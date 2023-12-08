@@ -2,6 +2,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+
 int findDuplicate(vector<int> &arr) 
 {
     int n=arr.size()-1;
