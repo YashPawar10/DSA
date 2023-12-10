@@ -2,6 +2,7 @@
 
 #include <bits/stdc++.h> 
 using namespace std;
+
 int occursOnce(vector<int> &a, int n){
 	// Write your code here.
 	int ans=0;
