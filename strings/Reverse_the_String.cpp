@@ -13,4 +13,8 @@ string reverseString(string str)
 		j--;
 	}
 	return str;
+
+	// using recursion
+	// if(str.length()==1)return str;
+	// return reverseString(str.substr(1))+str[0];
 }
