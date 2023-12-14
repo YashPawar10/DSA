@@ -16,15 +16,33 @@ public:
     }
 };
 
-LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+// LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+// {
+//     // Write your code here
+//     if(head==NULL)return NULL;
+//     if(head->next==NULL)return head;
+//     LinkedListNode<int> *newHead=reverseLinkedList(head->next);
+//     head->next->next=head;
+//     head->next=NULL;
+//     return newHead;
+//     return head;
+
+// }
+
+
+//iterative
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head)
 {
     // Write your code here
-    if(head==NULL)return NULL;
-    if(head->next==NULL)return head;
-    LinkedListNode<int> *newHead=reverseLinkedList(head->next);
-    head->next->next=head;
-    head->next=NULL;
-    return newHead;
-    return head;
-
+    LinkedListNode<int> *prev = NULL;
+    LinkedListNode<int> *curr = head;
+    LinkedListNode<int> *next = head;
+    while (curr)
+    {
+        next = next->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
 }
