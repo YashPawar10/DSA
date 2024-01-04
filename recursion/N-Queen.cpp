@@ -7,18 +7,18 @@ class Solution {
 public:
     vector<vector<string>>ans;
     bool isSafe(vector<string>board,int r,int c,int n){
-        for(int i=0;i<n;i++)if(board[i][c]=='Q')return false;
+        for(int i=0;i<n;i++)if(board[i][c]=='Q')return false;//check for column
 
         int nr=r,nc=c;
         while(nr>=0 && nc>=0){
-            if(board[nr][nc]=='Q')return false;
+            if(board[nr][nc]=='Q')return false; //left diagonal
             nr--;
             nc--;
 
         }
         nr=r,nc=c;
         while(nr>=0 && nc>=0){
-            if(board[nr--][nc++]=='Q')return false;
+            if(board[nr--][nc++]=='Q')return false; //right diagonal
         }
         return true;
     }
@@ -29,10 +29,10 @@ public:
             return;
         }
         for(int c=0;c<n;c++){
-            if(isSafe(board,r,c,n)){
-                board[r][c]='Q';
+            if(isSafe(board,r,c,n)){ 
+                board[r][c]='Q'; //place queen
                 nQueen(board,r+1,n,s);
-                board[r][c]='.';
+                board[r][c]='.';//backtrack
             }
         }
 
