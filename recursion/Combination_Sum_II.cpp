@@ -6,21 +6,22 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>>ans;
-    void helper(vector<int>& candidates, int target,int i,vector<int>&v){
-        if(target==0){
-            ans.push_back(v);
+    void helper(vector<int>&candiates, int sum , int i , vector<int>&currAns,bool preTaken){
+        if(sum==0){
+            ans.push_back(currAns);
             return;
-        }
-        if(i==candidates.size() || target<0)return;
-        for(int j=i;j<candidates.size();j++){
-            v.push_back(candidates[j]);
-            helper(candidates,target-candidates[j],i+1,v);
-            v.pop_back();
-        }
+        }//1 1 2 5
+        if(sum<0 || i>=candiates.size())return;
+        currAns.push_back(candiates[i]);
+        if(i>0 && preTaken == false && candiates[i-1] == candiates[i]){;}
+        else helper(candiates,sum-candiates[i],i+1,currAns,true);
+        currAns.pop_back();
+        helper(candiates,sum,i+1,currAns,false);
     }
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
         vector<int>v;
-        helper(candidates,target,0,v);
+        sort(candidates.begin(),candidates.end());
+        helper(candidates, target , 0 ,v,false);
         return ans;
     }
 };
